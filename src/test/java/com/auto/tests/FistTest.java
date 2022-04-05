@@ -2,9 +2,9 @@ package com.auto.tests;
 
 import com.auto.pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -59,7 +59,6 @@ public class FistTest {
         loginPage.getLoginButton().click();
 
         //        Check that user log on
-        Assert.assertTrue("User is not log on!", driver.getCurrentUrl().contains("inventory"));
-
+        Assert.assertTrue( driver.getCurrentUrl().contains("inventory"), "User is not log on!");
     }
 }

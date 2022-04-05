@@ -1,9 +1,9 @@
-package com.auto4.tests;
+package com.auto5.tests.login;
 
-import com.auto4.helpers.BaseTest;
-import com.auto4.pages.InventoryPage;
-import com.auto4.pages.LoginPage;
-import org.junit.Assert;
+import com.auto5.helpers.BaseTest;
+import com.auto5.pages.InventoryPage;
+import com.auto5.pages.LoginPage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -14,17 +14,14 @@ public class PositiveLoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
 
         //      Define credentials
-        String username = loginPage.getFirstValue("login_credentials");
-        String password = loginPage.getFirstValue("login_password");
+        String username = loginPage.getFirstValue(LoginPage.LOGIN);
+        String password = loginPage.getFirstValue(LoginPage.PASSWORD);
 
         //        Login with according credentials
-        loginPage.fillUserName(username);
-        loginPage.fillPassword(password);
-        loginPage.getLoginButton().click();
+        InventoryPage inventoryPage = loginPage.login(username, password);
 
         //        Check that user log on
-        Assert.assertTrue("User is not log on!", driver.getCurrentUrl().contains("inventory"));
-        InventoryPage inventoryPage = new InventoryPage(driver);
+        Assert.assertTrue( driver.getCurrentUrl().contains("inventory"), "User is not log on!");
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(inventoryPage.title.isDisplayed(), "Title not found!");
 

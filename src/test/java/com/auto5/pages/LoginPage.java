@@ -1,6 +1,7 @@
-package com.auto4.pages;
+package com.auto5.pages;
 
-import com.auto4.helpers.BasePage;
+import com.auto5.helpers.BasePage;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
+
+   public final static String LOGIN = "login_credentials";
+   public final static String PASSWORD = "login_password";
+
+
 
     @FindBy(css = "input#login-button")
     WebElement loginButton;
@@ -20,13 +26,20 @@ public class LoginPage extends BasePage {
     @FindBy(className = "error-button")
     WebElement errorButton;
 
+    Logger log = Logger.getLogger(this.getClass());
+
     public LoginPage(WebDriver driver) {
         super(driver);
+        log.info("Set up login page.");
     }
 
     public String getFirstValue(String className) {
+        log.info("Get value from "+className);
         String values = byClassName(className).getText();
-        return values.split("\n")[1];
+        String value = values.split("\n")[1];
+        log.info("first value = "+value);
+
+        return value;
     }
 
     public boolean isErrorPresent() {
@@ -49,14 +62,15 @@ public class LoginPage extends BasePage {
         return loginButton;
     }
 
-    public void fillUserName(String text) {
+    public InventoryPage login(String username, String password){
+        log.info("Login with username: "+username+" password: "+password);
         clearInputField(usernameField);
-        usernameField.sendKeys(text);
-    }
-
-    public void fillPassword(String text) {
+        usernameField.sendKeys(username);
         clearInputField(passwordFild);
-        passwordFild.sendKeys(text);
+        passwordFild.sendKeys(password);
+        loginButton.click();
+
+        return new InventoryPage(driver);
     }
 
     private void clearInputField(WebElement element) {

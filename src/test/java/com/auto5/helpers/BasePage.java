@@ -1,4 +1,4 @@
-package com.auto4.helpers;
+package com.auto5.helpers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,14 +13,14 @@ public class BasePage {
     }
     protected WebDriver driver;
 
+    protected WebElement byClassName(String className){
+        return driver.findElement(By.className(className));
+
 //    protected WebElement byId(String id){
 //        return driver.findElement(By.id(id));
 //    }
 //    protected WebElement byName(String name){
 //        return driver.findElement(By.name(name));
-//    }
-    protected WebElement byClassName(String className){
-        return driver.findElement(By.className(className));
 //    }
 //    protected WebElement byXpath(String xpath){
 //        return driver.findElement(By.xpath(xpath));

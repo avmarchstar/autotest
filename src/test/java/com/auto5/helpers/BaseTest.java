@@ -1,6 +1,7 @@
-package com.auto4.helpers;
+package com.auto5.helpers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -12,6 +13,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
+        PropertyConfigurator.configure("/src/test/resources/log4j.properties");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(defaultTimeout));

@@ -3,7 +3,7 @@ package com.auto3.tests;
 import com.auto3.helpers.BaseTest;
 import com.auto3.pages.InventoryPage;
 import com.auto3.pages.LoginPage;
-import org.junit.Assert;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -23,8 +23,7 @@ public class PositiveLoginTest extends BaseTest {
         loginPage.getLoginButton().click();
 
         //        Check that user log on
-        Assert.assertTrue("User is not log on!", driver.getCurrentUrl().contains("inventory"));
-        InventoryPage inventoryPage = new InventoryPage(driver);
+        Assert.assertTrue( driver.getCurrentUrl().contains("inventory"), "User is not log on!");        InventoryPage inventoryPage = new InventoryPage(driver);
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(inventoryPage.title.isDisplayed(), "Title not found!");
 
