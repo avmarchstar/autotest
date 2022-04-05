@@ -1,0 +1,7 @@
+<suite name="full">
+    <test name="full">
+        <packages>
+            <package name="com.auto6.tests"/>
+        </packages>
+    </test>
+</suite>
