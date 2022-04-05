@@ -1,0 +1,7 @@
+<suite name="positive">
+    <test name="positive">
+        <classes>
+            <class name="com.auto6.tests.login.PositiveLoginTest"/>
+        </classes>
+    </test>
+</suite>
