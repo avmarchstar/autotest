@@ -1,16 +1,21 @@
 package com.auto6.tests.login;
 
 import com.auto6.helpers.BaseTest;
+import com.auto6.helpers.retry.Retry;
 import com.auto6.pages.InventoryPage;
 import com.auto6.pages.LoginPage;
+import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 public class PositiveLoginTest extends BaseTest {
 
+    @Step("Positive")
+//    @Test(retryAnalyzer = Retry.class) -  realized through listener
     @Test
     public void positiveLoginTest() {
+//        Assert.fail("failure test");
         LoginPage loginPage = new LoginPage(driver);
 
         //      Define credentials
