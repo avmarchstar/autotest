@@ -1,4 +1,4 @@
-<suite name="full">
+<suite name="full" parallel="methods" threat-count="2">
     <test name="full">
         <packages>
             <package name="com.auto6.tests.login"/>

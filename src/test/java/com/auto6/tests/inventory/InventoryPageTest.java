@@ -3,6 +3,7 @@ package com.auto6.tests.inventory;
 import com.auto6.helpers.BaseTest;
 import com.auto6.pages.InventoryPage;
 import com.auto6.pages.LoginPage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -11,6 +12,7 @@ public class InventoryPageTest extends BaseTest {
 
     InventoryPage inventoryPage;
 
+    @Step("Inventory")
     @Test (dependsOnMethods = "com.auto6.tests.login.PositiveLoginTest.positiveLoginTest")
     public void inventoryTest(){
         LoginPage loginPage = new LoginPage(driver);

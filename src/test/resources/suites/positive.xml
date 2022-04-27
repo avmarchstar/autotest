@@ -1,4 +1,8 @@
 <suite name="positive">
+    <listeners>
+        <listener class-name="com.auto6.helpers.TestListener" />
+        <listener class-name="com.auto6.helpers.retry.RetryListener" />
+    </listeners>
     <test name="positive">
         <classes>
             <class name="com.auto6.tests.login.PositiveLoginTest"/>
